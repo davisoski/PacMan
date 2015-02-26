@@ -1,52 +1,46 @@
-/**
- * 
- */
 package uned.es.pacman;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-/**
- * @author DAVID HERNANDEZ GUTIERREZ - 45.438.268-C
- *
- */
 public class PacMan extends JFrame {
 
-	/**
-	 * Constructor
-	 */
+	private static final long serialVersionUID = 1L;
+
+	// Constructor
 	public PacMan() {
-		System.out.println("PacMan Constructor Inicio");
 
-		add(new Board());
-		this.setTitle("Pacman - 45.438.268-C");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(new Dimension(500, 500));
-		this.setLocationRelativeTo(null);
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(new GamePanel());
-		this.setVisible(true);
-		System.out.println("PacMan Constructor Fin");
+		Board board = new Board();
+
+		// Realmente el codigo seria jFrame.add(board), pero al extender de
+		// JFrame llamo a los metodos directamente
+		add(board);
+		this.setTitle("Pacman");
+		this.setSize(500, 500);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// Centramos y fijamos el tamanio
+		setResizable(false);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation(screenSize.width / 2 - getWidth() / 2, screenSize.height
+				/ 5 - getHeight() / 5);
+		setLocationRelativeTo(null);
+		setVisible(true); // Para acabar, hacer visible la ventana.
+
+		// board.moveBall();
+		// board.repaint();
+
 	}
 
-	public class GamePanel extends JPanel {
-
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	public static void main(String args[]) throws InterruptedException {
 		SwingUtilities.invokeLater(new Runnable() {
-			
+			@Override
 			public void run() {
 				new PacMan();
 			}
 		});
 	}
-
 }

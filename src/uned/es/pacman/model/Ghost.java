@@ -3,7 +3,7 @@ package uned.es.pacman.model;
 
 /**
  * 
- * @author DAVID HERNANDEZ GUTIERREZ - 45.438.268-C
+ * @author david
  *
  */
 public interface Ghost {
