@@ -10,6 +10,10 @@ import java.awt.event.KeyListener;
  * 
  */
 public class TecladoController implements KeyListener {
+	
+	private KeyEvent keyEvent;
+	
+	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -20,28 +24,31 @@ public class TecladoController implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		System.out.println("TecladoController.keyPressed");
 
-		int key = e.getKeyCode();
+		int keyCode = e.getKeyCode();
+		keyEvent = e;
 
-		if (key == KeyEvent.VK_LEFT) {
+		if (keyCode == KeyEvent.VK_LEFT) {
 			System.out.println("VK_LEFT");
 		}
-		if (key == KeyEvent.VK_RIGHT) {
+		if (keyCode == KeyEvent.VK_RIGHT) {
 			System.out.println("VK_RIGHT");
 		}
-		if (key == KeyEvent.VK_UP) {
+		if (keyCode == KeyEvent.VK_UP) {
 			System.out.println("VK_UP");
 		}
-		if (key == KeyEvent.VK_DOWN) {
+		if (keyCode == KeyEvent.VK_DOWN) {
 			System.out.println("VK_DOWN");
 		}
 
-		switch (key) {
+		switch (keyCode) {
 		case 32:
 			System.out.println("TAB.PAUSA");
 			break;
 		}
 
-		System.out.println("TecladoController.keyPressed: " + key);
+		System.out.println("TecladoController.keyPressed: " + keyCode);
+		
+	
 
 	}
 
@@ -49,7 +56,10 @@ public class TecladoController implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		System.out.println("TecladoController.keyReleased");
 	}
-	
+
+	public KeyEvent getKeyEvent() {
+		return keyEvent;
+	}
 	
 
 }

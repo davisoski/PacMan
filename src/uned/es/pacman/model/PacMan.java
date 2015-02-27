@@ -2,10 +2,16 @@ package uned.es.pacman.model;
 
 import java.awt.event.KeyEvent;
 
+import uned.es.pacman.controller.TecladoController;
+
 /**
  * 
  * @author david
  * 
+ *         Este elemento hereda las propiedades de Character generico, pero
+ *         funciona diferente, por ejemplo se mueve con el teclado y no de forma
+ *         automatica como los fantasmas, asi que implementarlo de manera
+ *         diferente
  */
 
 public class PacMan implements Caracter {
@@ -21,10 +27,51 @@ public class PacMan implements Caracter {
 	// Es visible en pantalla o no
 	private boolean visible;
 
+	private TecladoController entradasTeclado;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param entradasTeclado
+	 */
+	public PacMan(TecladoController entradasTeclado) {
+
+		this.entradasTeclado = entradasTeclado;
+
+	}
+
 	public void move() {
-		System.out.println("move");
-		x += dx;
-		y += dy;
+
+		KeyEvent keyCode = entradasTeclado.getKeyEvent();
+
+		if (keyCode != null) {
+			if (keyCode.getKeyCode() == KeyEvent.VK_LEFT) {
+				System.out.println("VK_LEFT");
+				dx = -1;
+				
+			}
+			if (keyCode.getKeyCode() == KeyEvent.VK_RIGHT) {
+				System.out.println("VK_RIGHT");
+				dx = 1;
+				
+			}
+			if (keyCode.getKeyCode() == KeyEvent.VK_UP) {
+				System.out.println("VK_UP");
+				dy = -1;
+			
+			}
+			if (keyCode.getKeyCode() == KeyEvent.VK_DOWN) {
+				System.out.println("VK_DOWN");
+				dy = 1;
+				
+			}
+			
+			x += dx;
+			y += dy;
+
+		} 
+		
+
 	}
 
 	@Override

@@ -35,7 +35,8 @@ public class Board extends JPanel implements ActionListener {
 	// Cuando se come uno de los puntos grandes, los fantamas se vuelven azules
 	private Image iBlinky_blue, iPinky_blue, iInky_blue, iClyde_blue;
 
-	// TecladoController entradasTeclado;
+	// Controlla los eventos de teclado
+	TecladoController entradasTeclado;
 
 	int xPacman = 30;
 	int yPacman = 10;
@@ -46,8 +47,6 @@ public class Board extends JPanel implements ActionListener {
 
 	public Board() {
 
-		addKeyListener(new TAdapter());
-		setFocusable(true);
 		setBackground(Color.BLACK);
 		// Activo el doble buffer
 		setDoubleBuffered(true);
@@ -56,25 +55,25 @@ public class Board extends JPanel implements ActionListener {
 		loadImages();
 
 		// Activo el controlador para el teclado
-		// addKeyListener();
+		this.addKeyListener();
 
 		// Aniado el controlador para el sonido
 		// sonido();
 
 		// Creo una instancia de pacman
-		pacman = new PacMan();
+		pacman = new PacMan(entradasTeclado);
 
 		// Cuanto mas pequenio es el valor mas rapido va la animacion
 		timer = new Timer(15, this);
 		timer.start();
 	}
 
-	// private void addKeyListener() {
-	// entradasTeclado = new TecladoController();
-	// this.addKeyListener(entradasTeclado);
-	// setFocusable(true);
-	//
-	// }
+	private void addKeyListener() {
+		entradasTeclado = new TecladoController();
+		this.addKeyListener(entradasTeclado);
+		setFocusable(true);
+
+	}
 
 	private void sonido() {
 		// Open an input stream to the audio file.
@@ -146,18 +145,6 @@ public class Board extends JPanel implements ActionListener {
 		pacman.move();
 		repaint();
 
-	}
-
-	private class TAdapter extends KeyAdapter {
-		public void keyPressed(KeyEvent e) {
-			pacman.KeyPressed(e);
-
-		}
-
-		public void keyReleased(KeyEvent e) {
-			pacman.KeyReleased(e);
-
-		}
 	}
 
 }
