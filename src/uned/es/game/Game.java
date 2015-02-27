@@ -1,4 +1,4 @@
-package uned.es.pacman;
+package uned.es.game;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -6,12 +6,12 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-public class PacMan extends JFrame {
+public class Game extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	// Constructor
-	public PacMan() {
+	public Game() {
 
 		Board board = new Board();
 
@@ -39,7 +39,7 @@ public class PacMan extends JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new PacMan();
+				new Game();
 			}
 		});
 	}
