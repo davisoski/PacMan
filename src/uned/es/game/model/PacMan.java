@@ -1,8 +1,8 @@
-package uned.es.pacman.model;
+package uned.es.game.model;
 
 import java.awt.event.KeyEvent;
 
-import uned.es.pacman.controller.TecladoController;
+import uned.es.game.controller.TecladoController;
 
 /**
  * 
@@ -40,6 +40,9 @@ public class PacMan implements Caracter {
 
 	}
 
+	/**
+	 * Muevo el pacman de acuerdo al teclado. En principio deberia detectar las colisiones y demás
+	 */
 	public void move() {
 
 		KeyEvent keyCode = entradasTeclado.getKeyEvent();

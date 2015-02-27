@@ -1,4 +1,4 @@
-package uned.es.pacman.controller;
+package uned.es.game.controller;
 
 public class PacmanController {
 

@@ -1,4 +1,4 @@
-package uned.es.pacman.controller;
+package uned.es.game.controller;
 
 /**
  * Detecta las colisiones; Dos tipos: 1.- Entre Pacman/Fantasma --> Perdida de

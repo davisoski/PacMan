@@ -1,4 +1,4 @@
-package uned.es.pacman.model;
+package uned.es.game.model;
 
 
 public class Clyde implements Ghost {

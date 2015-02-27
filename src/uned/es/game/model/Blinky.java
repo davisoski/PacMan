@@ -1,4 +1,4 @@
-package uned.es.pacman.model;
+package uned.es.game.model;
 
 import java.awt.Point;
 

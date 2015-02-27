@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,10 +15,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
-import uned.es.pacman.controller.TecladoController;
-import uned.es.pacman.model.PacMan;
+import uned.es.game.controller.TecladoController;
+import uned.es.game.maze.Map;
+import uned.es.game.model.PacMan;
 
 /**
  * 
@@ -42,8 +42,10 @@ public class Board extends JPanel implements ActionListener {
 	int yPacman = 10;
 
 	private Timer timer;
-
+	private Map m;
 	private PacMan pacman;
+	
+	
 
 	public Board() {
 
@@ -62,10 +64,12 @@ public class Board extends JPanel implements ActionListener {
 
 		// Creo una instancia de pacman
 		pacman = new PacMan(entradasTeclado);
+		//Creo y pinto el laberinto (maze)
+		m = new Map();
 
 		// Cuanto mas pequenio es el valor mas rapido va la animacion
 		timer = new Timer(15, this);
-		timer.start();
+//		timer.start();
 	}
 
 	private void addKeyListener() {
@@ -127,6 +131,30 @@ public class Board extends JPanel implements ActionListener {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		drawPacman(g2d);
+		
+		
+		if (m != null) {
+			for (int y = 0; y < 28; y++) {
+				for (int x = 0; x < 28; x++) {
+
+					if (m.getMap(x, y).equals("0")) {
+						g.drawImage(m.getCeldaVacia(), x * 16, y * 16, null);
+					}
+					if (m.getMap(x, y).equals("1")) {
+						g.drawImage(m.getDot(), x * 16, y * 16, null);
+					}
+					if (m.getMap(x, y).equals("2")) {
+						g.drawImage(m.getPowerPellet(), x * 16, y * 16, null);
+					}
+					if (m.getMap(x, y).equals("3")) {
+						g.drawImage(m.getPared(), x * 16, y * 16, null);
+					}
+				}
+			}
+		} else {
+			System.out.println("m == null");
+		}
+	
 	}
 
 	private void drawPacman(Graphics2D g2d) {
