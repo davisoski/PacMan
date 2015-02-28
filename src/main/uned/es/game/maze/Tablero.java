@@ -46,8 +46,8 @@ public class Tablero extends JPanel implements ActionListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 		if (m != null) {
-			for (int y = 0; y < 28; y++) {
-				for (int x = 0; x < 28; x++) {
+			for (int y = 0; y < 27; y++) {
+				for (int x = 0; x < 29; x++) {
 
 					if (m.getMap(x, y).equals("0")) {
 						g.drawImage(m.getCeldaVacia(), x * 16, y * 16, null);

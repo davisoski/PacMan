@@ -134,8 +134,8 @@ public class Board extends JPanel implements ActionListener {
 		
 		
 		if (m != null) {
-			for (int y = 0; y < 28; y++) {
-				for (int x = 0; x < 28; x++) {
+			for (int y = 0; y < 29; y++) {
+				for (int x = 0; x < 27; x++) {
 
 					if (m.getMap(x, y).equals("0")) {
 						g.drawImage(m.getCeldaVacia(), x * 16, y * 16, null);
@@ -148,6 +148,9 @@ public class Board extends JPanel implements ActionListener {
 					}
 					if (m.getMap(x, y).equals("3")) {
 						g.drawImage(m.getPared(), x * 16, y * 16, null);
+					}
+					if (m.getMap(x, y).equals("4")) {
+						g.drawImage(m.getCeldaAbierta(), x * 16, y * 16, null);
 					}
 				}
 			}

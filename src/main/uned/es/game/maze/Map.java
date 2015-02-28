@@ -12,10 +12,10 @@ public class Map {
 	private static final String ruta = "C://google-drive//eclipse-proyectos//Maze//images//uned//";
 	private Scanner m;
 
-	private String Map[] = new String[28];
+	private String Map[] = new String[29];
 
 
-	private Image celdaVacia, pared, dot, powerPellet;
+	private Image celdaVacia,celdaAbierta, pared, dot, powerPellet;
 
 	public Map() {
 
@@ -24,6 +24,8 @@ public class Map {
 
 		ImageIcon  img = new ImageIcon(ruta + "celda-vacia.png");
 		celdaVacia = img.getImage();
+		img = new ImageIcon(ruta + "celda-abierta.png");
+		celdaAbierta = img.getImage();
 		img = new ImageIcon(ruta + "pared.png");
 		pared = img.getImage();
 
@@ -39,6 +41,8 @@ public class Map {
 		closeFile();
 
 	}
+
+	
 
 	public void openFile() {
 		try {
@@ -56,7 +60,7 @@ public class Map {
 		System.out.println("readFile()");
 		while (m.hasNext()) {
 
-			for (int i = 0; i < 28; i++) {
+			for (int i = 0; i < 29; i++) {
 				Map[i] = m.next();
 			}
 		}
@@ -80,6 +84,9 @@ public class Map {
 
 	public Image getDot() {
 		return dot;
+	}
+	public Image getCeldaAbierta() {
+		return celdaAbierta;
 	}
 
 
